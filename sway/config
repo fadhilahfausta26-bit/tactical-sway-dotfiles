@@ -355,7 +355,7 @@ gaps outer 4
 default_border pixel 2
 
 # Kunci langsung tombol Windows (Mod4) + D ke Fuzzel
-bindsym Mod4+d exec fuzzel
+bindsym Mod4+d exec env GTK_THEME=Adwaita:dark fuzzel
 for_window [app_id="wifi-popup"] floating enable, border pixel 2
 
 # Lock screen taktis (Mod4 + Escape) & auto-lock saat idle 10 menit
@@ -371,3 +371,6 @@ exec_always sh -c 'pkill -x waybar || true; sleep 1; waybar >/tmp/waybar.log 2>&
 
 # Kursor Taktis Bibata Modern Amber
 seat seat0 xcursor_theme Bibata-Modern-Amber 24
+
+# Paksa tema gelap GTK untuk Thunar & aplikasi GUI
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway GTK_THEME=Adwaita:dark
