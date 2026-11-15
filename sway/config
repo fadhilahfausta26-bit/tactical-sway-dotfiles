@@ -344,7 +344,6 @@ client.unfocused        #232a2d #141b1e #676e70 #232a2d #232a2d
 client.urgent           #e57474 #141b1e #dadada #e57474 #e57474
 
 # === TACTICAL HUD SETUP ===
-exec_always pkill waybar; waybar
 exec_always pkill mako; mako
 
 # Warna Border Tactical Dark (Serasi dengan soppo.png)
@@ -360,9 +359,15 @@ bindsym Mod4+d exec fuzzel
 for_window [app_id="wifi-popup"] floating enable, border pixel 2
 
 # Lock screen taktis (Mod4 + Escape) & auto-lock saat idle 10 menit
-bindsym Mod4+Ctrl+l exec swaylock -f -c 1d2021
+bindsym Mod4+Ctrl+l exec swaylock -f
 exec swayidle -w \
-    timeout 600 'swaylock -f -c 1d2021' \
+    timeout 600 'swaylock -f' \
     timeout 900 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f -c 1d2021'
+    before-sleep 'swaylock -f'
+
+# Jalankan Vertical Tactical Dock setelah compositor Sway siap
+exec_always sh -c 'pkill -x waybar || true; sleep 1; waybar >/tmp/waybar.log 2>&1 &'
+
+# Kursor Taktis Bibata Modern Amber
+seat seat0 xcursor_theme Bibata-Modern-Amber 24
