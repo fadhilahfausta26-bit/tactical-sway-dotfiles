@@ -1,0 +1,20 @@
+format = "$username$hostname$directory$git_branch$character"
+
+[username]
+show_always = true
+style_user = "bold green"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "bold green"
+format = "[@$hostname]($style) "
+
+[directory]
+style = "bold blue"
+truncation_length = 3
+format = "[$path]($style) "
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "

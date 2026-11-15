@@ -1,0 +1,9 @@
+font=JetBrainsMono Nerd Font 10
+background-color=#1d2021ee
+text-color=#ebdbb2
+border-color=#d79921
+border-size=2
+border-radius=6
+padding=10
+margin=10
+default-timeout=4000
