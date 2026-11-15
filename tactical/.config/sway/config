@@ -84,7 +84,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Escape exec ~/.local/bin/tactical-powermenu
 #
 # Moving around:
 #
@@ -306,7 +306,6 @@ gaps outer 4
 bindsym $mod+Ctrl+Escape exec foot btop
 floating_modifier $mod normal
 
-bindsym $mod+Escape exec ~/.config/sway/powermenu.sh
 
 
 output eDP-1 scale 1.1
@@ -374,3 +373,19 @@ seat seat0 xcursor_theme Bibata-Modern-Amber 24
 
 # Paksa tema gelap GTK untuk Thunar & aplikasi GUI
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway GTK_THEME=Adwaita:dark
+
+# ==========================================
+
+# ==========================================
+# TACTICAL SCRATCHPAD & CLIPBOARD MANAGER
+# ==========================================
+# 1. Scratchpad Terminal (Super + `)
+for_window [app_id="foot-scratch"] floating enable, resize set 820 480, move position center, border pixel 2
+exec foot --app-id=foot-scratch
+for_window [app_id="foot-scratch"] move scratchpad
+bindsym $mod+grave [app_id="foot-scratch"] scratchpad show, move position center
+
+# 2. Clipboard History (Super + Shift + V)
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+bindsym $mod+Shift+v exec cliphist list | fuzzel --dmenu --prompt="CLIPBOARD > " | cliphist decode | wl-copy

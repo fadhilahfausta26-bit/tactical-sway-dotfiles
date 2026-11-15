@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+CHOICE=$(printf "  Lock Screen\n  Suspend\n  Reboot\n  Shutdown\n  Exit Sway" | fuzzel --dmenu --lines=5 --width=28 --prompt="SYSTEM > ")
+
+case "$CHOICE" in
+    *"Lock Screen"*) swaylock ;;
+    *"Suspend"*)     swaylock -f && systemctl suspend ;;
+    *"Reboot"*)      systemctl reboot ;;
+    *"Shutdown"*)    systemctl poweroff ;;
+    *"Exit Sway"*)   swaymsg exit ;;
+esac
