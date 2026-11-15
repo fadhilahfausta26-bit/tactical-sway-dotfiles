@@ -1,0 +1,396 @@
+# set $menu wofi --show drun,run
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term foot
+# Your preferred application launcher
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+#     bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Escape exec ~/.local/bin/tactical-powermenu
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     position top
+#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+include /etc/sway/config.d/*
+
+
+input "type:touchpad" dwt enabled
+input "type:touchpad" tap enabled
+input "type:touchpad" natural_scroll enabled
+input "type:touchpad" pointer_accel 0.3
+
+# Screenshot langsung ke Clipboard (tanpa simpan file)
+bindsym --to-code Ctrl+Print exec grim - | wl-copy
+bindsym --to-code Ctrl+Shift+Print exec slurp | grim -g - - | wl-copy
+
+bindsym --to-code Mod4+e exec thunar
+
+bindsym --to-code Mod4+Shift+w exec zen-browser
+
+# 1. Touchpad Laptop
+input "type:touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+}
+
+# 2. Fitur Alt+Tab untuk Pindah Jendela Aktif
+bindsym Mod1+Tab focus next
+bindsym Mod1+Shift+Tab focus prev
+
+# 3. Kontrol Volume Suara
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+# 4. Kontrol Kecerahan Layar (Brightness)
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Wallpaper
+output * bg ~/Pictures/soppo.png fill
+
+# Gaps & Border Tactical
+gaps inner 8
+gaps outer 4
+default_border pixel 2
+
+# Warna Border (Aktif: Biru Senter | Inaktif: Abu Gelap | Urgent: Merah Mata)
+
+# Kunci layar manual dengan SUPER + Shift + x
+bindsym Mod4+Shift+x exec swaylock -c 000000
+
+# Kunci layar otomatis setelah 5 menit tidak ada aktivitas
+exec swayidle -w \
+     timeout 300 'swaylock -c 000000' \
+     timeout 600 'swaymsg "output * dpms off"' \
+     resume 'swaymsg "output * dpms on"'
+
+# Mengubah ketebalan border jendela (2 pixel) dan menghilangkan titlebar tebal
+default_border pixel 2
+default_floating_border pixel 2
+
+# Simpan riwayat copy-paste
+exec wl-paste --watch cliphist store
+
+# Buka riwayat clipboard dengan SUPER + Clipboard/Shift + V
+# bindsym Mod4+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
+exec mako
+
+# Shutdown laptop dengan SUPER + Shift + BackSpace
+bindsym Mod4+Shift+BackSpace exec systemctl poweroff
+
+# Reboot laptop dengan SUPER + Shift + r (opsional)
+bindsym Mod4+Shift+r exec systemctl reboot
+
+# --- RAPIKAN TAMPILAN VISUAL ---
+gaps inner 8
+gaps outer 4
+
+
+bindsym $mod+Ctrl+Escape exec foot btop
+floating_modifier $mod normal
+
+
+
+output eDP-1 scale 1.1
+
+# --- Dark Tactical ST AR-15 Theme ---
+gaps inner 6
+gaps outer 3
+default_border pixel 2
+default_floating_border pixel 2
+
+client.focused          #7dd3fc #1c2128 #f1f5f9 #f43f5e #7dd3fc
+client.focused_inactive #363d47 #12151a #94a3b8 #363d47 #363d47
+client.unfocused        #1e232a #12151a #64748b #1e232a #1e232a
+client.urgent           #f43f5e #12151a #ffffff #f43f5e #f43f5e
+
+# Panel Notifikasi Samping (SUPER + n)
+exec swaync
+bindsym $mod+n exec swaync-client -t -sw
+
+# --- Window Snapping (SUPER + Ctrl + Panah) ---
+bindsym $mod+Control+Left floating enable, resize set 50 ppt 100 ppt, move position 0 0
+bindsym $mod+Control+Right floating enable, resize set 50 ppt 100 ppt, move position 50 ppt 0
+bindsym $mod+Control+Up floating enable, resize set 100 ppt 100 ppt, move position 0 0
+bindsym $mod+Control+Down floating enable, resize set 35 ppt 40 ppt, move position 63 ppt 56 ppt
+exec_always python3 ~/.config/sway/scripts/auto_workspace.py
+
+# --- Integrasi Tema Everblush & Eww ---
+
+# --- Palet Warna Border Everblush ---
+gaps inner 6
+default_border pixel 2
+client.focused          #67b0e8 #232a2d #dadada #67b0e8 #67b0e8
+client.focused_inactive #3b4244 #141b1e #b3b9b8 #3b4244 #3b4244
+client.unfocused        #232a2d #141b1e #676e70 #232a2d #232a2d
+client.urgent           #e57474 #141b1e #dadada #e57474 #e57474
+
+# === TACTICAL HUD SETUP ===
+exec_always pkill mako; mako
+
+# Warna Border Tactical Dark (Serasi dengan soppo.png)
+client.focused          #d79921 #282828 #ebdbb2 #fabd2f   #d79921
+client.focused_inactive #504945 #1d2021 #a89984 #504945   #504945
+client.unfocused        #3c3836 #1d2021 #928374 #3c3836   #3c3836
+gaps inner 6
+gaps outer 4
+default_border pixel 2
+
+# Kunci langsung tombol Windows (Mod4) + D ke Fuzzel
+bindsym Mod4+d exec env GTK_THEME=Adwaita:dark fuzzel
+for_window [app_id="wifi-popup"] floating enable, border pixel 2
+
+# Lock screen taktis (Mod4 + Escape) & auto-lock saat idle 10 menit
+bindsym Mod4+Ctrl+l exec swaylock -f
+exec swayidle -w \
+    timeout 600 'swaylock -f' \
+    timeout 900 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f'
+
+# Jalankan Vertical Tactical Dock setelah compositor Sway siap
+exec_always sh -c 'pkill -x waybar || true; sleep 1; waybar >/tmp/waybar.log 2>&1 &'
+
+# Kursor Taktis Bibata Modern Amber
+seat seat0 xcursor_theme Bibata-Modern-Amber 24
+
+# Paksa tema gelap GTK untuk Thunar & aplikasi GUI
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway GTK_THEME=Adwaita:dark
+
+# ==========================================
+
+# ==========================================
+# TACTICAL SCRATCHPAD & CLIPBOARD MANAGER
+# ==========================================
+
+# 2. Clipboard History (Super + Shift + V)
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+bindsym $mod+Shift+v exec cliphist list | fuzzel --dmenu --prompt="CLIPBOARD > " | cliphist decode | wl-copy
+
+# Kontrol Media & TWS untuk Music Player
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# 1. Scratchpad Terminal (Super + `)
+for_window [app_id="foot-scratch"] floating enable, resize set 820 480, move position center, border pixel 2, move scratchpad
+bindsym $mod+grave exec ~/.local/bin/toggle-scratch
+bindsym $mod+m exec ~/musik.sh

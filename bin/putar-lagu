@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+URL="$1"
+MPRIS_SO=$(rpm -ql mpv-mpris 2>/dev/null | grep '\.so$' | head -n 1)
+SOCKET="/tmp/mpv-socket"
+
+pkill -f "mpv --no-video" 2>/dev/null
+rm -f "$SOCKET"
+
+# Buat file playlist sementara berisi semua URL untuk mode shuffle otomatis
+cut -d'|' -f2 "$HOME/Music/playlist.txt" > /tmp/musik-queue.m3u
+
+SCRIPT_OPT=""
+[ -n "$MPRIS_SO" ] && SCRIPT_OPT="--script=$MPRIS_SO"
+
+# Putar lagu pilihan terlebih dahulu, lalu lanjutkan playlist secara acak (--shuffle)
+nohup mpv --no-video --shuffle --input-ipc-server="$SOCKET" $SCRIPT_OPT "$URL" --playlist=/tmp/musik-queue.m3u >/tmp/mpv-musik.log 2>&1 &

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Cek jendela foot-scratch lewat swaymsg tree (akurat, tidak tertipu pgrep)
+if ! swaymsg -t get_tree | grep -q '"app_id": "foot-scratch"'; then
+    foot --app-id=foot-scratch >/dev/null 2>&1 &
+    sleep 0.3
+fi
+swaymsg '[app_id="foot-scratch"] scratchpad show, move position center'

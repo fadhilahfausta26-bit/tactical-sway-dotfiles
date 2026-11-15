@@ -379,13 +379,18 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 # ==========================================
 # TACTICAL SCRATCHPAD & CLIPBOARD MANAGER
 # ==========================================
-# 1. Scratchpad Terminal (Super + `)
-for_window [app_id="foot-scratch"] floating enable, resize set 820 480, move position center, border pixel 2
-exec foot --app-id=foot-scratch
-for_window [app_id="foot-scratch"] move scratchpad
-bindsym $mod+grave [app_id="foot-scratch"] scratchpad show, move position center
 
 # 2. Clipboard History (Super + Shift + V)
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 bindsym $mod+Shift+v exec cliphist list | fuzzel --dmenu --prompt="CLIPBOARD > " | cliphist decode | wl-copy
+
+# Kontrol Media & TWS untuk Music Player
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# 1. Scratchpad Terminal (Super + `)
+for_window [app_id="foot-scratch"] floating enable, resize set 820 480, move position center, border pixel 2, move scratchpad
+bindsym $mod+grave exec ~/.local/bin/toggle-scratch
+bindsym $mod+m exec ~/musik.sh

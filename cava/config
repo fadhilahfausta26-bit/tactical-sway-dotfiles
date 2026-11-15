@@ -1,0 +1,13 @@
+[general]
+framerate = 60
+bars = 0
+
+[input]
+method = pulse
+source = auto
+
+[color]
+gradient = 1
+gradient_color_1 = '#38bdf8'
+gradient_color_2 = '#34d399'
+gradient_color_3 = '#f472b6'

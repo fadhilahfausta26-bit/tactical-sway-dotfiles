@@ -1,0 +1,25 @@
+* {
+    font-family: "JetBrains Mono", "Cantarell", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.88);
+    color: #cdd6f4;
+    border-bottom: 2px solid #89b4fa;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #a6adc8;
+}
+
+#workspaces button.focused {
+    color: #1e1e2e;
+    background-color: #89b4fa;
+    border-radius: 6px;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray {
+    padding: 0 10px;
+}

@@ -1,0 +1,102 @@
+{
+    "layer": "top",
+    "position": "left",
+    "width": 40,
+    "margin-top": 6,
+    "margin-bottom": 6,
+    "margin-left": 6,
+    "spacing": 4,
+
+    "modules-left": [
+        "custom/launcher",
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "pulseaudio",
+        "backlight",
+        "network",
+        "clock"
+    ],
+
+    "custom/launcher": {
+        "format": "◈",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+        "format-icons": {
+            "1": "01",
+            "2": "02",
+            "3": "03",
+            "4": "04",
+            "5": "05",
+            "6": "06",
+            "default": "•"
+        }
+    },
+
+    "sway/mode": {
+        "format": "FLT",
+        "tooltip": true
+    },
+
+    "cpu": {
+        "interval": 3,
+        "format": "CPU\n{usage}%",
+        "tooltip": true
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": "RAM\n{percentage}%",
+        "tooltip": true
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "TMP\n{temperatureC}°"
+    },
+
+    "pulseaudio": {
+        "format": "VOL\n{volume}%",
+        "format-muted": "VOL\nMUT",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "backlight": {
+        "format": "BRI\n{percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "network": {
+        "format-wifi": "NET\nON",
+        "format-ethernet": "LAN\nON",
+        "format-disconnected": "NET\nOFF",
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "on-click": "foot -a wifi-popup -W 55x18 nmtui-connect"
+    },
+
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "{:%A, %d %B %Y}"
+    }
+}
