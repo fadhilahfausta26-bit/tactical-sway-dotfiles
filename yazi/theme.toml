@@ -1,0 +1,16 @@
+[manager]
+cwd = { fg = "#ffb000", bold = true }
+hovered = { fg = "#0f0f0f", bg = "#ffb000", bold = true }
+preview_hovered = { underline = true }
+find_keyword = { fg = "#ffb000", italic = true }
+marker_selected = { fg = "#ffb000", bg = "#ffb000" }
+border_symbol = "│"
+border_style = { fg = "#555555" }
+
+[status]
+separator_open = ""
+separator_close = ""
+mode_normal = { fg = "#0f0f0f", bg = "#ffb000", bold = true }
+mode_select = { fg = "#0f0f0f", bg = "#66cc66", bold = true }
+progress_label = { fg = "#ffb000", bold = true }
+progress_normal = { fg = "#ffb000", bg = "#222222" }
