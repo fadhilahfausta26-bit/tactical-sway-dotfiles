@@ -9,6 +9,16 @@ Konfigurasi lingkungan desktop **Fedora Linux + Sway Wayland** yang dioptimalkan
 
 ---
 
+## Preview Desktop
+
+![Clean Desktop Overview](assets/desktop-clean.png)
+
+| System Info (`fastfetch` + `btop`) | File Manager (`yazi`) | Music & Visualizer (`mpv` + `cava`) |
+| :---: | :---: | :---: |
+| ![Terminal Sysinfo](assets/terminal-sysinfo.png) | ![Yazi File Manager](assets/yazi.png) | ![Musik & Cava](assets/musik-cava.png) |
+
+---
+
 ## Spesifikasi Lingkungan & Optimasi
 
 | Komponen | Detail |
