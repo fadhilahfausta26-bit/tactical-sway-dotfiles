@@ -248,6 +248,8 @@ XF86AudioNext exec playerctl next
 XF86AudioPrev exec playerctl previous
 $mod+grave exec ~/.local/bin/toggle-scratch
 $mod+m exec ~/.local/bin/musik.sh
+Print exec grim ~/Pictures/Screenshots/ss_$(date +'%Y-%m-%d_%H-%M-%S').png && wl-copy < $(ls -t ~/Pictures/Screenshots/ss_*.png | head -n1)
+$mod+Shift+s exec FILE=~/Pictures/Screenshots/ss_$(date +'%Y-%m-%d_%H-%M-%S').png && grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE"
 ```
 
 ---
@@ -255,5 +257,5 @@ $mod+m exec ~/.local/bin/musik.sh
 ## Cara Memperbarui Repositori Saat Ada Kustomisasi Baru
 
 ```bash
-~/tactical-sway-dotfiles/sync.sh "deskripsi perubahan"
+~/Documents/GitHub/tactical-sway-dotfiles/sync.sh "deskripsi perubahan"
 ```
