@@ -1,0 +1,3 @@
+{
+    "F5": "command:run javac %f && java %n"
+}
