@@ -1,0 +1,5 @@
+#!/bin/bash
+dir=$(dirname "$1")
+file=$(basename "$1")
+class="${file%.java}"
+cd "$dir" && javac "$file" && java "$class"
