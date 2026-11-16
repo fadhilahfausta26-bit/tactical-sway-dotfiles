@@ -7,6 +7,16 @@ marker_selected = { fg = "#ffb000", bg = "#ffb000" }
 border_symbol = "│"
 border_style = { fg = "#555555" }
 
+[filetype]
+rules = [
+  { url = "*/", fg = "#ffb000", bold = true },
+  { mime = "image/*", fg = "#66cc66" },
+  { mime = "video/*", fg = "#ff8800" },
+  { mime = "audio/*", fg = "#ff8800" },
+  { mime = "application/zip", fg = "#ff4444" },
+  { url = "*", fg = "#e5e5e5" }
+]
+
 [status]
 separator_open = ""
 separator_close = ""

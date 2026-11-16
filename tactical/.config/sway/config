@@ -393,4 +393,4 @@ bindsym XF86AudioPrev exec playerctl previous
 # 1. Scratchpad Terminal (Super + `)
 for_window [app_id="foot-scratch"] floating enable, resize set 820 480, move position center, border pixel 2, move scratchpad
 bindsym $mod+grave exec ~/.local/bin/toggle-scratch
-bindsym $mod+m exec ~/musik.sh
+bindsym $mod+m exec ~/.local/bin/musik.sh

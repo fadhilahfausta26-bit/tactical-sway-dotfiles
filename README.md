@@ -247,7 +247,7 @@ XF86AudioPlay exec playerctl play-pause
 XF86AudioNext exec playerctl next
 XF86AudioPrev exec playerctl previous
 $mod+grave exec ~/.local/bin/toggle-scratch
-$mod+m exec ~/musik.sh
+$mod+m exec ~/.local/bin/musik.sh
 ```
 
 ---
