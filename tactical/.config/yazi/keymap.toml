@@ -1,0 +1,13 @@
+[mgr]
+prepend_keymap = [
+    { on = [ "c" ], run = "yank", desc = "Copy file" },
+    { on = [ "v" ], run = "paste", desc = "Paste file" },
+    { on = [ "y" ], run = "copy path", desc = "Copy path file" },
+]
+
+[manager]
+prepend_keymap = [
+    { on = [ "c" ], run = "yank", desc = "Copy file" },
+    { on = [ "v" ], run = "paste", desc = "Paste file" },
+    { on = [ "y" ], run = "copy path", desc = "Copy path file" },
+]
