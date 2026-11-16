@@ -48,7 +48,7 @@ cmd.connect(sock_path)
 
 while True:
     mtype, event = recv_msg(sub)
-    if event and event.get("change") == "new":
+    if event and event.get("change") == "new" and not str(event.get("container", {}).get("app_id", "")).startswith("musik-"):
         time.sleep(0.2)
         send_msg(cmd, 4) # GET_TREE
         _, tree = recv_msg(cmd)
