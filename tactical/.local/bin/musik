@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+PLAYLIST="$HOME/Music/playlist.txt"
+SOCKET="/tmp/mpv-socket"
+
+# Otomatis matikan mpv dan tutup panel lain saat fzf ditutup
+trap "pkill -f 'mpv --no-video' 2>/dev/null; pkill -f 'app-id=musik-' 2>/dev/null" EXIT
+
+fzf --delimiter="|" --with-nth=1 \
+    --prompt="Cari Lagu > " \
+    --header="Enter: Putar | Ctrl-P: Pause/Play | Ctrl-N: Next Random | Esc: Keluar" \
+    --color="bg+:#1e293b,fg+:#38bdf8,hl:#f472b6,prompt:#34d399" \
+    --bind "enter:execute-silent($HOME/.local/bin/putar-lagu {2})" \
+    --bind "ctrl-p:execute-silent(echo '{ \"command\": [\"cycle\", \"pause\"] }' | socat - $SOCKET 2>/dev/null)" \
+    --bind "ctrl-n:execute-silent(echo '{ \"command\": [\"playlist-next\"] }' | socat - $SOCKET 2>/dev/null)" \
+    --bind "ctrl-b:execute-silent(echo '{ \"command\": [\"playlist-prev\"] }' | socat - $SOCKET 2>/dev/null)" < "$PLAYLIST"
