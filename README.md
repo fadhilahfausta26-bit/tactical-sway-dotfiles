@@ -13,6 +13,8 @@ A lightweight, keyboard-driven **Fedora Linux + Sway Wayland** desktop configura
 
 ![Clean Desktop Overview](assets/desktop-clean.png)
 
+> **Wallpaper:** [Download on Wallhaven (`whvn.cc/l317d2`)](https://whvn.cc/l317d2)
+
 | System Info (`fastfetch` + `btop`) | File Manager (`yazi`) | Music & Visualizer (`mpv` + `cava`) |
 | :---: | :---: | :---: |
 | ![Terminal Sysinfo](assets/terminal-sysinfo.png) | ![Yazi File Manager](assets/yazi.png) | ![Music & Cava](assets/musik-cava.png) |
