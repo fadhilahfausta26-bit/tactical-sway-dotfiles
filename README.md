@@ -1,6 +1,6 @@
 # Tactical Sway Dotfiles
 
-Konfigurasi lingkungan desktop **Fedora Linux + Sway Wayland** yang dioptimalkan untuk efisiensi memori (ASUS E410K / 4 GB RAM + zram), alur kerja berbasis keyboard, dan komunikasi terminal.
+A lightweight, keyboard-driven **Fedora Linux + Sway Wayland** desktop configuration tailored for low-memory hardware (4 GB RAM + `zram`) and a TUI-first workflow.
 
 ![OS](https://img.shields.io/badge/OS-Fedora_Linux-51A2DA?style=flat-square&logo=fedora&logoColor=white)
 ![WM](https://img.shields.io/badge/WM-Sway_Wayland-2E3440?style=flat-square&logo=wayland&logoColor=white)
@@ -9,88 +9,89 @@ Konfigurasi lingkungan desktop **Fedora Linux + Sway Wayland** yang dioptimalkan
 
 ---
 
-## Preview Desktop
+## Desktop Preview
 
 ![Clean Desktop Overview](assets/desktop-clean.png)
 
 | System Info (`fastfetch` + `btop`) | File Manager (`yazi`) | Music & Visualizer (`mpv` + `cava`) |
 | :---: | :---: | :---: |
-| ![Terminal Sysinfo](assets/terminal-sysinfo.png) | ![Yazi File Manager](assets/yazi.png) | ![Musik & Cava](assets/musik-cava.png) |
+| ![Terminal Sysinfo](assets/terminal-sysinfo.png) | ![Yazi File Manager](assets/yazi.png) | ![Music & Cava](assets/musik-cava.png) |
 
 ---
 
-## Spesifikasi Lingkungan & Optimasi
+## Environment & Optimization
 
-| Komponen | Detail |
+| Component | Details |
 | :--- | :--- |
-| **Distro & Display** | Fedora Linux (Sway Wayland) |
+| **OS & Display** | Fedora Linux (Sway Wayland) |
 | **Window Manager** | Sway + Swaylock + Mako |
 | **Bar & Launcher** | Waybar + Fuzzel |
 | **Terminal & Shell** | Foot + Starship + Yazi |
-| **Komunikasi & Audio** | `nchat` (WhatsApp TUI) + PipeWire + `mpv` + `sptlrx` + Cava |
-| **Optimasi Memori** | Kompresi `zram` & alur kerja TUI ringan untuk perangkat 4 GB RAM |
+| **Comms & Audio** | `nchat` (WhatsApp TUI) + PipeWire + `mpv` + `sptlrx` + Cava |
+| **Memory Tuning** | `zram` compression & lightweight TUI workflow for 4 GB RAM |
 
 ---
 
-## Palet Warna Tema
+## Color Palette
 
-| Peran | Nama | Hex | Pratinjau |
+| Role | Name | Hex | Preview |
 | :--- | :--- | :--- | :--- |
-| Background Utama | Tactical Dark | `#141B1E` | ![#141B1E](https://placehold.co/15x15/141B1E/141B1E.png) |
+| Background | Tactical Dark | `#141B1E` | ![#141B1E](https://placehold.co/15x15/141B1E/141B1E.png) |
 | Surface / Panel | Slate Charcoal | `#232A2D` | ![#232A2D](https://placehold.co/15x15/232A2D/232A2D.png) |
-| Aksen Utama | Tactical Amber | `#E5C76B` | ![#E5C76B](https://placehold.co/15x15/E5C76B/E5C76B.png) |
-| Aksen Sekunder | Warm Copper | `#E57474` | ![#E57474](https://placehold.co/15x15/E57474/E57474.png) |
-| Teks Utama | Off White | `#DADADA` | ![#DADADA](https://placehold.co/15x15/DADADA/DADADA.png) |
+| Primary Accent | Tactical Amber | `#E5C76B` | ![#E5C76B](https://placehold.co/15x15/E5C76B/E5C76B.png) |
+| Secondary Accent | Warm Copper | `#E57474` | ![#E57474](https://placehold.co/15x15/E57474/E57474.png) |
+| Foreground | Off White | `#DADADA` | ![#DADADA](https://placehold.co/15x15/DADADA/DADADA.png) |
 
 ---
 
-## Komponen Utama & Konfigurasi
+## Core Components
 
-| Direktori / File | Komponen | Keterangan |
+| Path | Component | Description |
 | :--- | :--- | :--- |
-| `sway/` | **Sway WM** | Konfigurasi window manager, autostart, dan skrip pendukung |
-| `waybar/` | **Waybar** | Status bar modular beserta varian tema (`gruvbox`, `minimal`) |
-| `foot/` | **Foot Terminal** | Emulator terminal Wayland ringan dengan tema warna taktis |
-| `fuzzel/` | **Fuzzel** | App launcher berbasis Wayland dengan tema selaras |
-| `nchat/` | **nchat (WhatsApp)** | Kustomisasi keybinding dan tampilan klien WhatsApp TUI |
-| `btop/` | **btop++** | Pemantau resource sistem dengan tema `tactical-amber` |
-| `yazi/` | **Yazi** | File manager terminal dengan pratinjau cepat |
-| `mako/` | **Mako** | Daemon notifikasi Wayland |
-| `swaylock/` | **Swaylock** | Konfigurasi layar kunci kustom |
-| `fastfetch/` & `cava/` | **Aesthetics** | Fetch info sistem dan visualizer audio terminal |
-| `starship.toml` | **Starship Prompt** | Prompt shell cepat dan informatif |
-| `bin/` | **Skrip Kustom** | Utilitas pemutar musik (`mpv` + `sptlrx`) dan kontrol scratchpad |
+| `sway/` | **Sway WM** | Window manager configuration, autostart, and helper scripts |
+| `waybar/` | **Waybar** | Modular status bar with theme variants (`gruvbox`, `minimal`) |
+| `foot/` | **Foot Terminal** | Lightweight Wayland terminal emulator with tactical color scheme |
+| `fuzzel/` | **Fuzzel** | Wayland application launcher styled to match the desktop |
+| `nchat/` | **nchat (WhatsApp)** | Custom keybindings and UI tweaks for terminal WhatsApp client |
+| `btop/` | **btop++** | System resource monitor featuring custom `tactical-amber` theme |
+| `yazi/` | **Yazi** | Fast terminal file manager with file previews |
+| `mako/` | **Mako** | Wayland notification daemon |
+| `swaylock/` | **Swaylock** | Custom lockscreen layout and assets |
+| `fastfetch/` & `cava/` | **Aesthetics** | Custom system fetch info and terminal audio spectrum visualizer |
+| `starship.toml` | **Starship Prompt** | Fast, minimal cross-shell prompt |
+| `bin/` | **Custom Scripts** | Music player automation (`mpv` + `sptlrx`) and scratchpad utilities |
 
 ---
 
-## Struktur Direktori Repositori
+## Repository Structure
 
 ```text
 tactical-sway-dotfiles/
-├── sway/           # Konfigurasi utama Sway & skrip pendukung
-├── waybar/         # Konfigurasi & styling status bar
-├── foot/           # Konfigurasi font, skema warna & terminal
-├── fuzzel/         # Konfigurasi launcher aplikasi
-├── nchat/          # Keybinding & tampilan klien WhatsApp TUI
-├── btop/           # Konfigurasi & tema monitor sistem
-├── yazi/           # Konfigurasi & keymap file manager TUI
-├── mako/           # Konfigurasi daemon notifikasi
-├── swaylock/       # Konfigurasi & aset layar kunci
-├── fastfetch/      # Konfigurasi & aset info sistem
-├── cava/           # Konfigurasi visualizer spektrum audio
-├── icons/          # Tema kursor Bibata-Modern-Amber
-├── bin/            # Skrip otomatisasi musik & scratchpad
-├── starship.toml   # Konfigurasi prompt shell
-├── sync.sh         # Skrip sinkronisasi otomatis ke GitHub
-└── README.md       # Dokumentasi repositori
+├── assets/         # Desktop & TUI preview screenshots
+├── sway/           # Sway WM config & helper scripts
+├── waybar/         # Status bar config & stylesheets
+├── foot/           # Terminal font, color scheme & behavior
+├── fuzzel/         # Application launcher config
+├── nchat/          # Terminal WhatsApp client keybindings & UI
+├── btop/           # System monitor config & custom theme
+├── yazi/           # TUI file manager config & keymaps
+├── mako/           # Notification daemon config
+├── swaylock/       # Lockscreen config & assets
+├── fastfetch/      # System info fetch config & assets
+├── cava/           # Audio spectrum visualizer config
+├── icons/          # Bibata-Modern-Amber cursor theme
+├── bin/            # Custom music & scratchpad automation scripts
+├── starship.toml   # Shell prompt configuration
+├── sync.sh         # Automated dotfiles sync script
+└── README.md       # Repository documentation
 ```
 
 ---
 
-## Sinkronisasi Otomatis
+## Automated Sync
 
-Jalankan skrip berikut setiap kali ada perubahan konfigurasi lokal di `~/.config/` untuk menyalin file terbaru dan mengunggahnya ke GitHub:
+Run the sync script whenever local changes in `~/.config/` are ready to be pushed to GitHub:
 
 ```bash
-~/Documents/GitHub/tactical-sway-dotfiles/sync.sh "deskripsi perubahan"
+~/Documents/GitHub/tactical-sway-dotfiles/sync.sh "commit message"
 ```
