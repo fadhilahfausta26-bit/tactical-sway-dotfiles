@@ -398,3 +398,6 @@ bindsym $mod+m exec ~/.local/bin/musik.sh
 # Screenshot ke Pictures/Screenshots dan clipboard
 bindsym Print exec grim ~/Pictures/Screenshots/ss_$(date +'%Y-%m-%d_%H-%M-%S').png && wl-copy < $(ls -t ~/Pictures/Screenshots/ss_*.png | head -n1)
 bindsym $mod+Shift+s exec FILE=~/Pictures/Screenshots/ss_$(date +'%Y-%m-%d_%H-%M-%S').png && grim -g "$(slurp)" "$FILE" && wl-copy < "$FILE"
+
+# Auto-mount Google Drive (Doksli Rispem)
+exec --no-startup-id rclone mount gdrive: ~/gdrive --drive-root-folder-id 1J3Zn0rDHhWsPsoY2l3ju2t3MNqPt5IX2 --vfs-cache-mode full --daemon
